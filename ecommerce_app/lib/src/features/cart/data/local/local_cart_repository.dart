@@ -11,7 +11,6 @@ abstract class LocalCartRepository {
 }
 
 final localCartRepositoryProvider = Provider<LocalCartRepository>((ref) {
-  
   // * Override this in the main method
   throw UnimplementedError();
 });

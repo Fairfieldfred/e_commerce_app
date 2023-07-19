@@ -21,7 +21,8 @@ void main() async {
     overrides: [
       localCartRepositoryProvider.overrideWithValue(localCartRepository),
     ],
-    child: const MyApp()));
+    child: const MyApp(),
+  ));
 }
 
 void registerErrorHandlers() {

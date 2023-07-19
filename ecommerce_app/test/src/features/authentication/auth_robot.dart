@@ -81,7 +81,6 @@ class AuthRobot {
 
   Future<void> signInWithEmailAndPassword() async {
     await enterEmail('test@test.com');
-    await tester.pump();
     await enterPassword('test1234');
     await tapEmailAndPasswordSubmitButton();
   }

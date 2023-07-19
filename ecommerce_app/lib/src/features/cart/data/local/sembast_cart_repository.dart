@@ -6,7 +6,7 @@ import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
 import 'package:sembast_web/sembast_web.dart';
 
-class SembastCartRepository implements LocalCartRepository{
+class SembastCartRepository implements LocalCartRepository {
   SembastCartRepository(this.db);
   final Database db;
   final store = StoreRef.main();
@@ -17,14 +17,14 @@ class SembastCartRepository implements LocalCartRepository{
       return databaseFactoryIo.openDatabase('${appDocDir.path}/$filename');
     } else {
       return databaseFactoryWeb.openDatabase(filename);
-    }  
+    }
   }
 
-  static Future<SembastCartRepository> makeDefault () async {
-    return SembastCartRepository( await createDatabase('default.db'));
+  static Future<SembastCartRepository> makeDefault() async {
+    return SembastCartRepository(await createDatabase('default.db'));
   }
 
-  static const cartItemsKey = 'cartItems'; 
+  static const cartItemsKey = 'cartItems';
 
   @override
   Future<Cart> fetchCart() async {
@@ -46,7 +46,7 @@ class SembastCartRepository implements LocalCartRepository{
     final record = store.record(cartItemsKey);
     return record.onSnapshot(db).map((snapshot) {
       if (snapshot != null) {
-        return Cart.fromJson(snapshot.value as String);
+        return Cart.fromJson(snapshot.value);
       } else {
         return const Cart();
       }
